@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xinhai.demo01.mapper.ScoreMapper">
+    <select id="selectById" parameterType="java.lang.Integer" resultType="com.xinhai.demo01.bean.Score">
+        select * from score where id = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selectByIdLock" parameterType="java.lang.Integer" resultType="com.xinhai.demo01.bean.Score">
+        select * from score where id = #{id,jdbcType=INTEGER} for update
+    </select>
+    <update id="updateScore" parameterType="com.xinhai.demo01.bean.Score">
+        update score set score = #{score,jdbcType=INTEGER} where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
